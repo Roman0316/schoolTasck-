@@ -40,7 +40,6 @@ async function createInviteLink({ email, role }) {
 async function registerStudent({
   firstName, lastName, surName, telephone, email, password,
 }) {
-  console.log('Password: ', password);
   const candidat = await Student.findOne({
     where: { email },
   });

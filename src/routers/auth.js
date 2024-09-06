@@ -35,8 +35,8 @@ authRouter.get(
 authRouter.post(
   '/register',
   wrap(async (req, res) => {
-    const user = await authController.registerStudent(req.body);
-    res.json(user);
+    await authController.registerStudent(req.body);
+    res.status(204).end();
   }),
 );
 
