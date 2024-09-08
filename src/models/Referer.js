@@ -56,4 +56,13 @@ module.exports = class Referer extends BaseModel {
 
     },
   };
+
+  static associate(models) {
+    Referer.hasMany(models.student, {
+      foreignKey: {
+        name: 'refererId',
+        allowNull: true,
+      },
+    });
+  }
 };

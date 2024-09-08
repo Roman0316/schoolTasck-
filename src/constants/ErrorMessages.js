@@ -6,6 +6,10 @@ const ErrorMessages = {
   auth_jwt_invalid_token: 'auth_jwt_invalid_token',
   auth_missing_jwt_token: 'auth_missing_jwt_token',
 
+  payment_already_exists: 'payment_already_exists',
+
+  lesson_alredy_exists: 'lesson_on_this_date_already_exists',
+
   missing_required_field: 'missing_required_field',
 
   user_not_found: 'user_not_found',

@@ -1,7 +1,7 @@
 const { BadRequest, Unauthorized } = require('http-errors');
 
 const { URL } = require('../config/dotenv');
-const { Referer, Student } = require('../models/index');
+const { Referer, Student } = require('../services/sequelize');
 const ErrorMessages = require('../constants/ErrorMessages');
 const { hashPassword, comparePasswords, generateAccessToken } = require('../utils/authHelpers');
 

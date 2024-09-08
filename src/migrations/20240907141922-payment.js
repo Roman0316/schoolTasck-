@@ -2,41 +2,42 @@ const { DataTypes } = require('sequelize');
 
 module.exports = {
   up: async (queryInterface) => {
-    await queryInterface.createTable('students', {
+    await queryInterface.createTable('payments', {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false,
       },
-      firstName: {
+      studentId: {
+        type: DataTypes.UUID,
+        allowNull: true,
+        references: {
+          model: { tableName: 'students' },
+          key: 'id',
+        },
+        onDelete: 'SET NULL',
+      },
+      numberOfPaytment: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      lastName: {
-        type: DataTypes.STRING,
+      amount: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
       },
-      surName: {
+      currency: {
+        type: DataTypes.STRING,
+        defaultValue: 'rubles',
+        allowNull: false,
+      },
+      paymentMethod: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      email: {
+      status: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-      },
-      telephone: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        protected: true,
-      },
-      role: {
-        type: DataTypes.ENUM('referer', 'invited'),
-        defaultValue: 'invited',
+        defaultValue: 'pending',
         allowNull: false,
       },
       createdAt: {
@@ -49,6 +50,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('students');
+    await queryInterface.dropTable('payments');
   },
 };

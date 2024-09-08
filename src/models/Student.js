@@ -18,6 +18,15 @@ module.exports = class Student extends BaseModel {
       primaryKey: true,
       allowNull: false,
     },
+    refererId: {
+      type: DataTypes.UUID,
+      allowNull: true,
+      references: {
+        model: { tablename: 'referers' },
+        key: 'id',
+      },
+      onDelete: 'SET NULL',
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -50,4 +59,28 @@ module.exports = class Student extends BaseModel {
       allowNull: false,
     },
   };
+
+  static associate(models) {
+    Student.hasMany(models.payment, {
+      foreignKey: {
+        name: 'studentId',
+        allowNull: true,
+      },
+    });
+
+    Student.belongsTo(models.referer, {
+      foreignKey: {
+        name: 'refererId',
+        allowNull: true,
+      },
+    });
+
+    Student.belongsToMany(models.lesson, {
+      foreignKey: {
+        name: 'studentId',
+        allowNull: true,
+      },
+      through: models.studLesson,
+    });
+  }
 };
