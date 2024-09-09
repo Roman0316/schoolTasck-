@@ -15,21 +15,12 @@ module.exports = class Payment extends BaseModel {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    studentId: {
-      type: DataTypes.UUID,
-      allowNull: true,
-      references: {
-        model: { tableName: 'students' },
-        key: 'id',
-      },
-      onDelete: 'SET NULL',
-    },
     numberOfPaytment: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     amount: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     currency: {
@@ -47,13 +38,4 @@ module.exports = class Payment extends BaseModel {
       allowNull: false,
     },
   };
-
-  static associate(models) {
-    Payment.belongsTo(models.student, {
-      foreignKey: {
-        name: 'studentId',
-        allowNull: true,
-      },
-    });
-  }
 };

@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 const { dbConfig } = require('../config/dotenv');
 
 const {
-  Student, Referer, Payment, Lesson, StudLesson,
+  Student, Referer, Payment, Lesson, StudLesson, RefLesson,
 } = require('../models/index');
 
 const {
@@ -21,13 +21,13 @@ Referer.initialize(sequelize);
 Payment.initialize(sequelize);
 Lesson.initialize(sequelize);
 StudLesson.initialize(sequelize);
+RefLesson.initialize(sequelize);
 
 // associate models
-Referer.associate(sequelize.models);
 Student.associate(sequelize.models);
-Payment.associate(sequelize.models);
 Lesson.associate(sequelize.models);
 StudLesson.associate(sequelize.models);
+RefLesson.associate(sequelize.models);
 
 module.exports = {
   Sequelize,
@@ -37,4 +37,5 @@ module.exports = {
   Payment,
   Lesson,
   StudLesson,
+  RefLesson,
 };

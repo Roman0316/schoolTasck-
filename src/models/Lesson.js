@@ -12,6 +12,7 @@ module.exports = class Lesson extends BaseModel {
   static Schema = {
     id: {
       type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
     },
@@ -42,6 +43,14 @@ module.exports = class Lesson extends BaseModel {
         allowNull: true,
       },
       through: models.studLesson,
+    });
+
+    Lesson.belongsToMany(models.referer, {
+      foreignKey: {
+        name: 'lessonId',
+        allowNull: true,
+      },
+      through: models.refLesson,
     });
   }
 };

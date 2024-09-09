@@ -9,15 +9,6 @@ module.exports = {
         primaryKey: true,
         allowNull: false,
       },
-      refererId: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-          model: { tableName: 'referers' },
-          key: 'id',
-        },
-        onDelete: 'SET NULL',
-      },
       firstName: {
         type: DataTypes.STRING,
         allowNull: false,

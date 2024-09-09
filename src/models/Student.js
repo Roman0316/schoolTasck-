@@ -1,5 +1,4 @@
 const { DataTypes } = require('sequelize');
-const { v4: uuid } = require('uuid');
 
 const BaseModel = require('./BaseModel');
 const { userRoles } = require('../constants/index');
@@ -17,15 +16,6 @@ module.exports = class Student extends BaseModel {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
-    },
-    refererId: {
-      type: DataTypes.UUID,
-      allowNull: true,
-      references: {
-        model: { tablename: 'referers' },
-        key: 'id',
-      },
-      onDelete: 'SET NULL',
     },
     firstName: {
       type: DataTypes.STRING,
@@ -61,20 +51,6 @@ module.exports = class Student extends BaseModel {
   };
 
   static associate(models) {
-    Student.hasMany(models.payment, {
-      foreignKey: {
-        name: 'studentId',
-        allowNull: true,
-      },
-    });
-
-    Student.belongsTo(models.referer, {
-      foreignKey: {
-        name: 'refererId',
-        allowNull: true,
-      },
-    });
-
     Student.belongsToMany(models.lesson, {
       foreignKey: {
         name: 'studentId',

@@ -13,10 +13,11 @@
     "migrate:undo": "sequelize db:migrate:undo",
     "migrate:undo:all": "sequelize db:migrate:undo:all",
     "migration:create": "sequelize migration:create --name",
+    
     "seed:run": "sequelize db:seed:all",
     "seed:create": "sequelize seed:create --name ",
-    "seed:undo": "sequelize db:seed:undo --seed 20240905074722-referer",
     "seed:undo:all": "sequelize db:seed:undo:all"
+
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

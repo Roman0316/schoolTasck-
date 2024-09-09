@@ -4,12 +4,12 @@ const { Payment } = require('../services/sequelize');
 const ErrorMessages = require('../constants/ErrorMessages');
 
 async function createPaymentInform({
-  numberOfPayment, amount, currency, paymentMethod,
+  numberOfPaytment, amount, currency, paymentMethod,
 }) {
-  const payment = await Payment.findOne({ where: { numberOfPayment } });
+  const payment = await Payment.findOne({ where: { numberOfPaytment } });
   if (payment) throw new BadRequest(ErrorMessages.payment_already_exists);
   return Payment.create({
-    numberOfPayment,
+    numberOfPaytment,
     amount,
     currency,
     paymentMethod,
@@ -17,8 +17,8 @@ async function createPaymentInform({
   });
 }
 
-async function getPaymentInform({ numberOfPayment }) {
-  return Payment.findAll({ where: { numberOfPayment } });
+async function getPaymentInform({ numberOfPaytment }) {
+  return Payment.findAll({ where: { numberOfPaytment } });
 }
 
 module.exports = {

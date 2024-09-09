@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/auth', authRouter);
-// app.use(authMiddleware);
+app.use(authMiddleware);
 app.use('/api/payment', paymentRouter);
 app.use('/api/student', studentRouter);
 app.use('/api/lesson', lessonRouter);

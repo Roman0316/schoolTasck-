@@ -1,7 +1,7 @@
 const { Student } = require('../services/sequelize');
 
 async function getStudentsList({ orderBy, typeOfSort }) {
-  const { count, rows: users } = await Student.findAndCountAll({
+  const { count, rows: students } = await Student.findAndCountAll({
     attributes: {
       exclude: ['password'],
     },
@@ -10,7 +10,7 @@ async function getStudentsList({ orderBy, typeOfSort }) {
       [orderBy, typeOfSort]],
 
   });
-  return { count, users };
+  return { count, students };
 }
 
 module.exports = {

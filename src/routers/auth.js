@@ -4,12 +4,13 @@ const path = require('path');
 const wrap = require('../utils/wrap');
 const { authController } = require('../controllers/index');
 const { authMiddleware, validateRequest } = require('../middlewares/index');
-// const { registrationRequest, loginRequest, changePasswordRequest } = require('../requests/auth/index');
+const { loginRequest, registerRequest } = require('../requests/auth/index');
 
 const authRouter = Router();
 
 authRouter.post(
   '/login',
+  validateRequest(loginRequest),
   wrap(async (req, res) => {
     const accessToken = await authController.loginStudent(req.body);
     res.json({ accessToken });
@@ -34,9 +35,10 @@ authRouter.get(
 
 authRouter.post(
   '/register',
+  validateRequest(registerRequest),
   wrap(async (req, res) => {
     await authController.registerStudent(req.body);
-    res.status(204).end();
+    res.status(200).end();
   }),
 );
 

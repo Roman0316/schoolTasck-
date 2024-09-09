@@ -1,21 +1,21 @@
 const BaseModel = require('./BaseModel');
 
-module.exports = class StudLesson extends BaseModel {
-  static modelName = 'studLesson';
+module.exports = class RefLesson extends BaseModel {
+  static modelName = 'refLesson';
 
-  static tableName = 'studLessons';
+  static tableName = 'refLessons';
 
   static protectedKeys = ['createdAt', 'updatedAt'];
 
   static Schema = { };
 
   static associate(models) {
-    StudLesson.belongsTo(models.student, {
-      foreignKey: 'studentId',
+    RefLesson.belongsTo(models.referer, {
+      foreignKey: 'refererId',
       allowNull: false,
       onDelete: 'CASCADE',
     });
-    StudLesson.belongsTo(models.lesson, {
+    RefLesson.belongsTo(models.lesson, {
       foreignKey: 'lessonId',
       allowNull: false,
       onDelete: 'CASCADE',

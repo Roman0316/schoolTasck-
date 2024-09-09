@@ -1,5 +1,4 @@
 const { DataTypes } = require('sequelize');
-const { v4: uuid } = require('uuid');
 
 const BaseModel = require('./BaseModel');
 const { userRoles } = require('../constants/index');
@@ -58,11 +57,12 @@ module.exports = class Referer extends BaseModel {
   };
 
   static associate(models) {
-    Referer.hasMany(models.student, {
+    Referer.belongsToMany(models.lesson, {
       foreignKey: {
         name: 'refererId',
         allowNull: true,
       },
+      through: models.refLesson,
     });
   }
 };

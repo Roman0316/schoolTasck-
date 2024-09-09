@@ -33,7 +33,7 @@ async function loginStudent({ email, password, role }) {
 async function createInviteLink({ email, role }) {
   if (role !== 'referer') throw new Unauthorized(ErrorMessages.auth_invalid_user_role);
   const referer = await Referer.findOne({ where: { email } });
-  const inviteLink = `${URL}/token=${referer.token}`;
+  const inviteLink = `${URL}?token=${referer.token}`;
   return inviteLink;
 }
 

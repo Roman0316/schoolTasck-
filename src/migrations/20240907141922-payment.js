@@ -9,21 +9,12 @@ module.exports = {
         primaryKey: true,
         allowNull: false,
       },
-      studentId: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-          model: { tableName: 'students' },
-          key: 'id',
-        },
-        onDelete: 'SET NULL',
-      },
       numberOfPaytment: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       amount: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       currency: {
