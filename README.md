@@ -6,7 +6,7 @@
 
 NODE_ENV - Specifies whether the application is running in "development" or "production" mode.
 API_PORT - Port number on which the API server should listen for incoming requests.
-FRONTEND_URL - URL where the frontend application is hosted or served from.
+FRONTEND_URL - URL where the frontend application is hosted or served from(registration form: http://localhost:5000/api/auth/register).
 
 #DATABASE
 PGUSER - Username used to authenticate with the PostgreSQL database.
